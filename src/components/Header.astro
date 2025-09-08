@@ -1,0 +1,62 @@
+---
+import { SOCIAL } from "../data/links";
+import logo from "../assets/logo.png";
+const nav = [
+    { href: "#features", label: "Features" },
+    { href: "#downloads", label: "Downloads" },
+    { href: "#donate", label: "Donate" },
+];
+---
+
+<header
+    class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-900/60 border-b border-black/5 dark:border-white/10"
+>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img
+                    src={logo.src}
+                    alt="Chameleon Ultra GUI"
+                    class="h-8 w-8 rounded-md shadow ring-1 ring-black/10 dark:ring-white/10"
+                />
+                <span class="text-lg font-semibold tracking-tight"
+                    >Chameleon Ultra GUI</span
+                >
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6 text-sm">
+                {
+                    nav.map((item) => (
+                        <a
+                            href={item.href}
+                            class="text-neutral-700 dark:text-neutral-200 hover:text-black dark:hover:text-white transition-colors"
+                        >
+                            {item.label}
+                        </a>
+                    ))
+                }
+            </nav>
+
+            <div class="flex items-center gap-2">
+                <a
+                    href={SOCIAL.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="inline-flex items-center gap-2 rounded-md border border-black/10 dark:border-white/10 px-3 py-1.5 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-black/5 dark:hover:bg-white/5 transition"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        class="size-4"
+                        ><path
+                            fill-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.455-1.157-1.11-1.466-1.11-1.466-.908-.62.069-.607.069-.607 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.56 9.56 0 0 1 2.504.337c1.909-1.296 2.748-1.027 2.748-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.337 4.695-4.565 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.481A10.019 10.019 0 0 0 22 12.017C22 6.484 17.523 2 12 2Z"
+                            clip-rule="evenodd"></path></svg
+                    >
+                    <span class="hidden sm:inline">GitHub</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

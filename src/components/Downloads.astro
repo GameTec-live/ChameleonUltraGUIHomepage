@@ -1,0 +1,78 @@
+---
+import { DOWNLOADS, RELEASES_URL } from "../data/links";
+const items = [
+    { label: "Windows (x64)", href: DOWNLOADS.windows, icon: "🪟" },
+    {
+        label: "Windows (Portable)",
+        href: DOWNLOADS.windowsPortable,
+        icon: "🪟",
+    },
+    { label: "macOS", href: DOWNLOADS.macos, icon: "🍎" },
+    { label: "iOS", href: DOWNLOADS.ios, icon: "📱" },
+    { label: "Linux (Other)", href: DOWNLOADS.linux, icon: "🐧" },
+    { label: "Linux (Arch AUR)", href: DOWNLOADS.linuxArch, icon: "🐧" },
+    { label: "Linux (Legacy)", href: DOWNLOADS.linuxLegacy, icon: "🐧" },
+    { label: "Linux (DEB)", href: DOWNLOADS.linuxDeb, icon: "🐧" },
+    { label: "Android", href: DOWNLOADS.android, icon: "🤖" },
+    { label: "Android (APK)", href: DOWNLOADS.androidAPK, icon: "🤖" },
+];
+import { Image } from "astro:assets";
+import showcase from "../assets/2.png";
+---
+
+<section id="downloads" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div class="grid gap-10 lg:grid-cols-2 items-center">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+                    Download Chameleon Ultra GUI
+                </h2>
+                <p class="mt-3 text-neutral-600 dark:text-neutral-300">
+                    Pick your platform below. Packages are published on our
+                    Releases page.
+                </p>
+
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {
+                        items.map((x) => (
+                            <a
+                                href={x.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-flex items-center gap-3 rounded-lg border border-black/10 dark:border-white/10 px-4 py-3 text-sm font-medium text-neutral-800 dark:text-neutral-200 hover:bg-black/5 dark:hover:bg-white/5 transition"
+                            >
+                                <span class="text-lg">{x.icon}</span>
+                                <span>{x.label}</span>
+                            </a>
+                        ))
+                    }
+                </div>
+                <a
+                    href={RELEASES_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="mt-4 inline-flex text-sm text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
+                    >See all releases →</a
+                >
+            </div>
+
+            <div class="relative">
+                <div
+                    class="absolute -inset-6 rounded-3xl bg-gradient-to-r from-teal-500/20 to-violet-600/20 blur-2xl"
+                >
+                </div>
+                <div
+                    class="relative overflow-hidden rounded-3xl ring-1 ring-black/10 dark:ring-white/10 shadow-2xl"
+                >
+                    <Image
+                        src={showcase}
+                        alt="Chameleon Ultra device and app"
+                        width={1000}
+                        height={700}
+                        class="w-full h-auto"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

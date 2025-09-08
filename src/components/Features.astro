@@ -1,0 +1,77 @@
+---
+const features = [
+    {
+        title: "One-click Connect",
+        desc: "Pair and reconnect over BLE with easy device discovery.",
+        color: "from-teal-500 to-emerald-500",
+        icon: "🔗",
+    },
+    {
+        title: "Emulation",
+        desc: "Manage RFID slots and emulate supported cards with ease.",
+        color: "from-violet-500 to-fuchsia-500",
+        icon: "🎭",
+    },
+    {
+        title: "Read & Write",
+        desc: "Read, clone, and write back to a variety of RFID cards.",
+        color: "from-amber-500 to-rose-500",
+        icon: "📡",
+    },
+    {
+        title: "Organization",
+        desc: "Keep your cards organized far beyond the device's capacity with a local card library.",
+        color: "from-sky-500 to-indigo-500",
+        icon: "📂",
+    },
+    {
+        title: "Cross-platform",
+        desc: "Builds for Windows, macOS, Linux, Android, and iOS.",
+        color: "from-cyan-500 to-blue-500",
+        icon: "🖥️",
+    },
+    {
+        title: "Themes",
+        desc: "Light and dark modes with system preference and keyboard toggle.",
+        color: "from-pink-500 to-rose-500",
+        icon: "🌗",
+    },
+];
+---
+
+<section id="features" class="relative">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div class="text-center max-w-2xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">
+                Powerful features. Clean UI.
+            </h2>
+            <p class="mt-3 text-neutral-600 dark:text-neutral-300">
+                Everything you need to get the most out of your Chameleon Ultra
+                device.
+            </p>
+        </div>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {
+                features.map((f, i) => (
+                    <div class="group relative overflow-hidden rounded-2xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-neutral-900/70 backdrop-blur p-6 transition hover:-translate-y-1 hover:shadow-2xl">
+                        <div
+                            class={`absolute -inset-1 rounded-2xl bg-gradient-to-r ${f.color} opacity-10 blur-2xl group-hover:opacity-30 transition`}
+                        />
+                        <div class="relative">
+                            <div class="size-10 grid place-items-center rounded-lg bg-gradient-to-br from-white/60 to-white/30 dark:from-neutral-800/60 dark:to-neutral-700/30 ring-1 ring-black/10 dark:ring-white/10">
+                                <span class="text-lg">{f.icon}</span>
+                            </div>
+                            <h3 class="mt-4 text-xl font-semibold">
+                                {f.title}
+                            </h3>
+                            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
+                                {f.desc}
+                            </p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

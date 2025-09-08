@@ -1,0 +1,127 @@
+---
+import { GITHUB_REPO } from "../data/links";
+import screenshot from "../assets/1.png";
+import { Image } from "astro:assets";
+---
+
+<section id="hero" class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+        <div
+            class="absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-gradient-to-br from-orange-500/30 via-green-950/20 to-amber-700/30 blur-3xl dark:from-orange-500/20 dark:via-green-400/10 dark:to-amber-500/20 animate-pulse"
+        >
+        </div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+            <div class="space-y-6">
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-white/60 dark:bg-neutral-900/60 backdrop-blur"
+                >
+                    Open Source • Cross-platform
+                </span>
+                <h1
+                    class="text-4xl sm:text-6xl font-black tracking-tight leading-[1.05]"
+                >
+                    Control your <span
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-yellow-500"
+                        >Chameleon Ultra</span
+                    > with ease
+                </h1>
+                <p
+                    class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl"
+                >
+                    Chameleon Ultra GUI is a fast, modern companion app for
+                    mobile and desktop. Easily manage your device with a
+                    delightful UX.
+                </p>
+
+                <div
+                    class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
+                >
+                    <a
+                        href="#downloads"
+                        class="inline-flex justify-center items-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-yellow-600 px-5 py-3 text-white font-semibold shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 transition"
+                    >
+                        Download
+                    </a>
+                    <a
+                        href={GITHUB_REPO}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex justify-center items-center gap-2 rounded-lg border border-black/10 dark:border-white/10 px-5 py-3 text-neutral-800 dark:text-neutral-200 hover:bg-black/5 dark:hover:bg-white/5 font-semibold transition"
+                    >
+                        View on GitHub
+                    </a>
+                </div>
+            </div>
+
+            <div class="perspective-normal">
+                <div
+                    class="group relative mx-auto h-96 w-full max-w-lg transform-3d transition-transform duration-100 will-change-transform"
+                    id="tilt-card"
+                >
+                    <div
+                        class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 ring-1 ring-black/10 dark:ring-white/10 shadow-2xl overflow-hidden [transform:translateZ(40px)]"
+                    >
+                        <Image
+                            src={screenshot}
+                            alt="App Screenshot"
+                            class="h-full w-full object-cover opacity-90"
+                        />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"
+                        >
+                        </div>
+                        <div
+                            class="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white"
+                        >
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold">
+                                    Chameleon Ultra GUI
+                                </h3>
+                                <div class="flex items-center gap-1 text-xs">
+                                    <span class="px-2 py-1 rounded bg-white/10"
+                                        >Open Source</span
+                                    >
+                                </div>
+                            </div>
+                            <p class="mt-2 text-sm text-white/80">
+                                Reading • Writing • Slot Management
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-orange-500 to-green-600 opacity-30 blur-2xl group-hover:opacity-60 transition-opacity [transform:translateZ(0px)]"
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const el = document.getElementById("tilt-card");
+    if (el) {
+        const damp = 20;
+        const rect = () => el.getBoundingClientRect();
+        let raf = 0;
+        el.addEventListener("pointermove", (e) => {
+            const r = rect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            const dx = (e.clientX - cx) / r.width;
+            const dy = (e.clientY - cy) / r.height;
+            const rx = (+dy * damp).toFixed(2);
+            const ry = (-dx * damp).toFixed(2);
+            cancelAnimationFrame(raf);
+            raf = requestAnimationFrame(() => {
+                el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+            });
+        });
+        el.addEventListener("pointerleave", () => {
+            el.style.transform = "";
+        });
+    }
+</script>
